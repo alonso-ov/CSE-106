@@ -1,0 +1,1 @@
+nums = input('Please enter two or more numbers: ')
