@@ -1,4 +1,6 @@
+
 table {
+    position: relative;
     font-size: 30px;
     padding: 15px;
     background-color: lightslategray;
@@ -11,7 +13,6 @@ table {
 button {
     width: 100%;
     padding: 20px 40px;
-    background-color: orange;
     color: white;
     font-size: 24px;
     font-weight: bold;
@@ -19,8 +20,32 @@ button {
     border-radius: 5px;
 }
 
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+}
+
 input {
     padding: 20px 30px;
     font-size: 20px;
     border-radius: 10px;
+}
+
+.num {
+    background-color: orange;
+}
+
+.func {
+    background-color: lightskyblue;
+}
+
+.func:active {
+    background-color: lightgreen;
+}
+
+#clear {
+    background-color: lightsalmon;
+}
+#clear:active {
+    background-color: darkgrey;
 }
