@@ -18,27 +18,38 @@
                     <td><button class="num" onclick="append('7')">7</button></td>
                     <td><button class="num" onclick="append('8')">8</button></td>
                     <td><button class="num" onclick="append('9')">9</button></td>
-                    <td><button class="func">\</button><td>
+
+                    <td><button class="func" id="\" onclick="express('\\')">\</button><td>
                 </tr>
                 <tr>
                     <td><button class="num" onclick="append('4')">4</button></td>
                     <td><button class="num" onclick="append('5')">5</button></td>
                     <td><button class="num" onclick="append('6')">6</button></td>
-                    <td><button class="func">x</button></td>
+
+                    <td><button class="func" id='*' onclick="express('*')">x</button></td>
                 </tr>
                 <tr>
                     <td><button class="num" onclick="append('1')">1</button></td>
                     <td><button class="num" onclick="append('2')">2</button></td>
                     <td><button class="num" onclick="append('3')">3</button></td>
-                    <td><button class="func">-</button></td>
+
+                    <td><button class="func" id="-" onclick="express('-')">-</button></td>
                 </tr>
                 <tr>
                     <td><button class="num" onclick="append('0')">0</button></td>
+
                     <td><button class="func" onclick="append('.')">.</button></td>
                     <td><button class="func">=</button></td>
-                    <td><button class="func">+</button></td>
+                    <td><button class="func" id="+" onclick="express('+')">+</button></td>
                 </tr>
         </table>
+
+        <!-- <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+            integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"
+        ></script> -->
 
         <script src="script.js" async defer></script>
     </body>
