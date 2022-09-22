@@ -1,4 +1,8 @@
 
+body {
+    background-color: lightgrey;
+}
+
 table {
     position: relative;
     font-size: 30px;
@@ -35,11 +39,11 @@ input {
     background-color: orange;
 }
 
-.func {
+.oper {
     background-color: lightskyblue;
 }
 
-.func:active {
+.oper:active {
     background-color: lightgreen;
 }
 
