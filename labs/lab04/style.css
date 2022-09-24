@@ -43,13 +43,18 @@ input {
     background-color: lightskyblue;
 }
 
-.oper:checked  + button{
+.oper:checked{
     background-color: lightgreen;
 }
 
 #clear {
     background-color: lightsalmon;
 }
+
 #clear:active {
     background-color: darkgrey;
+}
+
+.toggle {
+    background-color: gold;
 }

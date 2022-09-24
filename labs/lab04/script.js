@@ -4,16 +4,35 @@ const numbersButtons = document.querySelectorAll('.num')
 const operatorButtons = document.querySelectorAll('.oper')
 var currentInput = '', previousInput = '', currentOperation = ''
 
+function toggle(text){
+    btn = document.getElementById(text)
+
+    if (btn == null)
+        return 
+
+    btn.classList.remove('oper')
+    btn.classList.add('toggle')
+}
+
+function untoggle(){
+    operatorButtons.forEach((btn) => {
+        btn.classList.remove('toggle')
+        btn.classList.add('oper')
+    })
+}
+
+
 function cls() {
     output.value = ''
     currentInput = ''
     previousInput = ''
     currentOperation = ''
-    previousOperation = ''
+    untoggle()
 }
 
 
 function append(val){
+    untoggle()
 
     // if we have a past value and have nothing for our current then we must erase the output
     if(previousInput != '' & currentInput.length == 0){
@@ -27,6 +46,7 @@ function append(val){
 }
 
 function operation(operator) {
+    untoggle()
 
     // if our current input in empty then return because we cannot do any math with empty values
     if (currentInput === '' ) {
@@ -51,19 +71,15 @@ function solve(operator){
 
     switch(operator) {
         case '+':
-            console.log('adding')
             output.value = num1 + num2
             break;
         case '-':
-            console.log('subtracting')
             output.value = num1 - num2
             break;
         case 'x':
-            console.log('multiplying')
             output.value = num1 * num2
             break;
         case '÷':
-            console.log('dividing')
             output.value = num1 / num2
             break;
         case '=':
@@ -75,6 +91,7 @@ function solve(operator){
 
     previousInput = output.value
 }
+
 numbersButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         append(btn.innerText)
@@ -84,5 +101,6 @@ numbersButtons.forEach((btn) => {
 operatorButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         operation(btn.innerText)
+        toggle(btn.innerText)
     })
 })
