@@ -43,7 +43,7 @@ input {
     background-color: lightskyblue;
 }
 
-.oper:active {
+.oper:checked  + button{
     background-color: lightgreen;
 }
 
