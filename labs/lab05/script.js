@@ -1,36 +1,76 @@
-$results = $('[id^=result]')
-$results.hide()
+let request = new XMLHttpRequest()
+let $outputText = null;
 
-function requestData(method){
+function searchByName(){
+    let name = $(".input-name").val()
 
-    let request = new XMLHttpRequest()
-    
-    //1: search student grade by name
-    if(method == 1) {
-        studentName = $('#input-1').val()
+    request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name)
+    request.send()
 
-        request.open("GET", "https://amhep.pythonanywhere.com:/grades")
-        request.send()
+    request.onload = () => {
 
-        request.onload = () => {
+        let $outputText = $(".output-text")
 
-            data = JSON.parse(request.response)
 
-            grade = data[studentName]
-
-            $('#result-1').show()
-
-            if(grade == null) {
-                console.log('student does not exist')
-            } else {
-                console.log('Grade for ' + studentName + ' ' + grade)
-            }
+        if(request.status == 404){
+            $outputText.text("404 error student not found")
+        }else{
+            let data = $.parseJSON(request.response)
+            $outputText.text(name + ": " + data[name])
         }
-
     }
 
-    //catch if request fails
     request.onerror = () => {
         console.log('Error: request failed')
+    }
+}
+
+
+function getAllGrades(){
+    request.open("GET", "https://amhep.pythonanywhere.com:/grades")
+    request.send()
+
+    request.onload = () => {
+        data = $.parseJSON(request.response)
+
+        $(function() {
+            $.each(data, function(name, grade) {
+                var $tr = $('<tr>').append(
+                    $('<td>').text(name),
+                    $('<td>').text(grade),
+                ).appendTo('#output-table');
+            });
+        });
+    }
+
+    request.onerror = () => {
+        console.log('Error: request failed')
+    }
+}
+
+function switchSelect(action){
+    $outputs = $(".output")
+    $outputs.hide()
+
+    switch(action){
+        
+        case "1":
+            $searchByName = $("#1")
+            $searchByName.show()
+            break;
+
+        case "2":
+            getAllGrades()
+            $seeAllGrades = $("#2")
+            $seeAllGrades.show()
+            break;
+
+        case "4":
+            $editGrades = $("#4")
+            $editGrades.show()
+            break;
+
+        default:
+            break;
     }
 }

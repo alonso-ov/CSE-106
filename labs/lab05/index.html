@@ -2,9 +2,9 @@
 
 <html>
     <head>
+        <title>Student Grades</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Student Grades</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -13,17 +13,44 @@
     <body>
 
         <div class="tab">
-            <h1>Search Grade by Name</h1>
-            <div class="user-input">
-                <p>Enter name:</p>
-                <input id="input-1" type="text" value="student name">
-                <input type="button" value="search" onclick="requestData(1)">
-                <br>
-                <div id="result-1">
-                    <p>Results:</p>
-                    <p id="output"></p>
-                </div>
+            <h1>Gradebook</h1>
+            <div class="user-select">
+                <p>I want to </p>
+                <select onChange="switchSelect(this.value)">
+                    <option value="0">...</option>
+                    <option value="1">Ask for grade</option>
+                    <option value="2">See all grades</option>
+                    <option value="3">Create student with grade</option>
+                    <option value="4">Edit grade</option>
+                    <option value="5">Delete grade</option>
+                </select>
             </div>
+        </div>
+
+        <!--search grade by name-->
+        <div class="tab output" id="1" hidden>
+            <h1>Search Grade by Name</h1>
+            <input  id="input-name" type="text" placeholder="Name">
+            <input type="button" value="Search" onclick="searchByName()">
+            <p>Results: (Name: Grade)</p>
+            <p id="output-text"></p>
+        </div>
+
+        <!--see all grades-->
+        <div class="tab output" id="2" hidden>
+            <h1>All Grades</h1>
+            <table id="output-table">
+                <th>Name</th>
+                <th>Grade</th>
+            </table>
+        </div>
+
+        <!--edit grade-->
+        <div class ="tab output" id="4" hidden>
+            <h1>Edit Grade by Name</h1>
+            <input  id="input-name" type="text" placeholder="Name">
+            <input type="button" value="Search" onclick="editGrade(true)">
+            <p id="output-text"></p>
         </div>
 
         <script src="script.js"></script>
