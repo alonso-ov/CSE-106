@@ -1,20 +1,46 @@
 let request = new XMLHttpRequest()
 let $outputText = null;
 
-function searchByName(){
-    let name = $(".input-name").val()
+function editGrade(){
+    let name = $("#input-4").val()
+    let $outputText = $("#output-text-4")
 
     request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name)
+
     request.send()
 
     request.onload = () => {
 
-        let $outputText = $(".output-text")
+        if(request.status == 404){
+            $outputText.text("404 error: student not found")
+        } else {
+            let data = $.parseJSON(request.response)
+            $outputText.text(name + ": " + data[name])
 
+            $(".input-4-2").show()
+
+            $("#input-4-1-2")
+        }
+    }
+
+    request.onerror = () => {
+        console.log('Error: request failed')
+    }
+}
+
+function searchByName(edit=false){
+    let name = $("#input-1").val()
+    let $outputText = $("#output-text-1")
+
+    request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name)
+
+    request.send()
+
+    request.onload = () => {
 
         if(request.status == 404){
-            $outputText.text("404 error student not found")
-        }else{
+            $outputText.text("404 error: student not found")
+        } else {
             let data = $.parseJSON(request.response)
             $outputText.text(name + ": " + data[name])
         }
@@ -66,9 +92,9 @@ function switchSelect(action){
             break;
 
         case "4":
-            $editGrades = $("#4")
-            $editGrades.show()
-            break;
+            $editGrade = $("#4")
+            $editGrade.show()
+            break;         
 
         default:
             break;

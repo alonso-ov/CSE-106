@@ -30,10 +30,10 @@
         <!--search grade by name-->
         <div class="tab output" id="1" hidden>
             <h1>Search Grade by Name</h1>
-            <input  id="input-name" type="text" placeholder="Name">
+            <input  id="input-1" type="text" placeholder="Name">
             <input type="button" value="Search" onclick="searchByName()">
             <p>Results: (Name: Grade)</p>
-            <p id="output-text"></p>
+            <p id="output-text-1"></p>
         </div>
 
         <!--see all grades-->
@@ -48,9 +48,12 @@
         <!--edit grade-->
         <div class ="tab output" id="4" hidden>
             <h1>Edit Grade by Name</h1>
-            <input  id="input-name" type="text" placeholder="Name">
-            <input type="button" value="Search" onclick="editGrade(true)">
-            <p id="output-text"></p>
+            <input  id="input-4" type="text" placeholder="Name">
+            <input type="button" value="Search" onclick="editGrade()">
+            <p>Current (Name: Grade)</p>
+            <p id="output-text-4"></p>
+            <input  class="input-4-2"  id="input-4-1" type="text" placeholder="New Grade" hidden>
+            <input class="input-4-2"  id="input4-1-2" type="button" value="Set" hidden>
         </div>
 
         <script src="script.js"></script>
