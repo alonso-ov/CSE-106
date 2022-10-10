@@ -1,6 +1,7 @@
 let request = new XMLHttpRequest()
 let $outputText = null;
 
+
 function editGrade(){
     let name = $("#input-4").val()
     let $outputText = $("#output-text-4")
@@ -10,6 +11,7 @@ function editGrade(){
     request.send()
 
     request.onload = () => {
+        console.log(request.status)
 
         if(request.status == 404){
             $outputText.text("404 error: student not found")
@@ -18,8 +20,23 @@ function editGrade(){
             $outputText.text(name + ": " + data[name])
 
             $(".input-4-2").show()
+            $("#input4-1-2").click(() => {
+                let newGrade = $("#input-4-1").val()
+                name = String(name)
+                newGrade = String(newGrade)
 
-            $("#input-4-1-2")
+                let newData = {
+                    name: newGrade
+                }
+
+                var json = JSON.stringify(newData)
+
+                request.open("PUT", "https://amhep.pythonanywhere.com:/grades/" + name)
+                request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+
+                request.send(json)
+            })
         }
     }
 
@@ -28,7 +45,7 @@ function editGrade(){
     }
 }
 
-function searchByName(edit=false){
+function searchByName(){
     let name = $("#input-1").val()
     let $outputText = $("#output-text-1")
 
@@ -91,10 +108,19 @@ function switchSelect(action){
             $seeAllGrades.show()
             break;
 
+        case "3":
+            $createStudent = $("#3")
+            $createStudent.show()
+            break;
+
         case "4":
             $editGrade = $("#4")
             $editGrade.show()
-            break;         
+            break;
+
+        case "5":
+            $deleteGrade = $("#5")
+            $deleteGrade.show()       
 
         default:
             break;
