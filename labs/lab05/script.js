@@ -1,12 +1,43 @@
 let request = new XMLHttpRequest()
 let $outputText = null;
 
+function createStudent(){
+    let name = $("#input-3-1").val()
+    let grade = $("#input-3-2").val()
+
+    let data = {
+        "name": name,
+        "grade": grade
+    }
+
+    var json = JSON.stringify(data)
+
+    request.open("POST", "https://amhep.pythonanywhere.com:/grades")
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    request.send(json)
+
+}
+
+function setGrade(name, newGrade){
+    request = new XMLHttpRequest()
+
+    let newData = {
+        "grade" : newGrade}
+
+    var json = JSON.stringify(newData)
+
+    request.open("PUT", "https://amhep.pythonanywhere.com:/grades/" + name)
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+    request.send(json)
+}
 
 function editGrade(){
     let name = $("#input-4").val()
     let $outputText = $("#output-text-4")
 
-    request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name)
+    request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name, true)
 
     request.send()
 
@@ -21,21 +52,12 @@ function editGrade(){
 
             $(".input-4-2").show()
             $("#input4-1-2").click(() => {
+
                 let newGrade = $("#input-4-1").val()
                 name = String(name)
                 newGrade = String(newGrade)
 
-                let newData = {
-                    name: newGrade
-                }
-
-                var json = JSON.stringify(newData)
-
-                request.open("PUT", "https://amhep.pythonanywhere.com:/grades/" + name)
-                request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-
-                request.send(json)
+                setGrade(name , newGrade);
             })
         }
     }
@@ -89,6 +111,14 @@ function getAllGrades(){
     request.onerror = () => {
         console.log('Error: request failed')
     }
+}
+
+function deleteStudent(){
+    let name = $("#input-5").val()
+
+    request.open("DELETE", "https://amhep.pythonanywhere.com:/grades/" + name, true)
+
+    request.send(null)
 }
 
 function switchSelect(action){
