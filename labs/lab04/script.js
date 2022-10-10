@@ -80,6 +80,10 @@ function solve(operator){
             output.value = num1 * num2
             break;
         case '÷':
+            if (num2 == 0) {
+                output.value = 'Undefined'
+                break;
+            }
             output.value = num1 / num2
             break;
         case '=':
