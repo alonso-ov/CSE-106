@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Student Grades</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+
+        <div class="tab">
+            <h1>Gradebook</h1>
+            <div class="user-select">
+                <p>I want to </p>
+                <select onChange="switchSelect(this.value)">
+                    <option value="0">...</option>
+                    <option value="1">Ask for grade</option>
+                    <option value="2">See all grades</option>
+                    <option value="3">Create student with grade</option>
+                    <option value="4">Edit grade</option>
+                    <option value="5">Delete grade</option>
+                </select>
+            </div>
+        </div>
+
+        <!--search grade by name-->
+        <div class="tab output" id="1" hidden>
+            <h1>Search Grade by Name</h1>
+            <input  id="input-1" type="text" placeholder="Name">
+            <input type="button" value="Search" onclick="searchByName()">
+            <p>Results: (Name: Grade)</p>
+            <p id="output-text-1"></p>
+        </div>
+
+        <!--see all grades-->
+        <div class="tab output" id="2" hidden>
+            <h1>All Grades</h1>
+            <table id="output-table">
+                <th>Name</th>
+                <th>Grade</th>
+            </table>
+        </div>
+
+        <!--create new student-->
+        <div class="tab output" id="3" hidden>
+            <h1>Create Student with Grade</h1>
+            <input  id="input-3-1" type="text" placeholder="Name">
+            <input  class=""  id="input-3-2" type="text" placeholder="New Grade">
+            <input type="button" value="Create" onclick="createStudent()">
+        </div>
+
+        <!--edit grade-->
+        <div class ="tab output" id="4" hidden>
+            <h1>Edit Grade by Name</h1>
+            <input  id="input-4" type="text" placeholder="Name">
+            <input type="button" value="Search" onclick="editGrade()">
+            <p>Current (Name: Grade)</p>
+            <p id="output-text-4"></p>
+            <input  class="input-4-2"  id="input-4-1" type="text" placeholder="New Grade" hidden>
+            <input class="input-4-2"  id="input4-1-2" type="button" value="Set" hidden>
+        </div>
+
+        <!--delete grade-->
+        <div class ="tab output" id="5" hidden>
+            <h1>Delete Grade by Name</h1>
+            <input  id="input-5" type="text" placeholder="Name">
+            <input type="button" value="Delete" onclick="deleteStudent()">
+        </div>
+
+        <script src="{{ url_for('static',filename='script.js') }}">></script>
+    </body>
+</html>

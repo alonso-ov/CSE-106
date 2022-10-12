@@ -6,15 +6,23 @@ from flask_cors import CORS
 import json
 
 app = Flask(__name__)
-CORS(app)
+
+data = {}
 
 @app.route('/')
 def index():
-    return "Hello world"
-    # print('the home was requested')
-    # return render_template('index.html')
+    return render_template('index.html')
 
-# @app.route('/grades/<string:name>', methods=['GET'])
-# def get_grade(name):
-#     return
-#     #with open()
+@app.route('/grades', methods=['GET'])
+def get_grades():
+    return json.dumps(data)
+
+# add to dictionary
+@app.route('/grades', methods=['POST'])
+def post_student():
+    print(request.json)
+    data[request.json['name']] = request.json['grade']
+    return ''
+
+if __name__ == '__main__':
+    app.run()
