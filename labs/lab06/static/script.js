@@ -71,7 +71,7 @@ function searchByName(){
     let name = $("#input-1").val()
     let $outputText = $("#output-text-1")
 
-    request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name)
+    request.open("GET", "http://127.0.0.1:5000/grades/" + name)
 
     request.send()
 
@@ -92,7 +92,7 @@ function searchByName(){
 
 
 function getAllGrades(){
-    request.open("GET", "https://amhep.pythonanywhere.com:/grades")
+    request.open("GET", "http://127.0.0.1:5000/grades")
     request.send()
 
     request.onload = () => {
