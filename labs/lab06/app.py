@@ -13,16 +13,23 @@ data = {}
 def index():
     return render_template('index.html')
 
-# add to dictionary
+# create student
 @app.route('/grades', methods=['POST'])
 def post_student():
     data[request.json['name']] = request.json['grade']
     return 'success'
 
+@app.route('/grades/<string:name>', methods=['PUT'])
+def put_student(name):
+    data[name] = request.json['grade']
+    return 'success'
+
+# get all students grade
 @app.route('/grades', methods=['GET'])
 def get_all_students():
     return json.dumps(data)
 
+#get one student's grade
 @app.route('/grades/<string:name>', methods=['GET'])
 def get_student(name):
     if name in data:

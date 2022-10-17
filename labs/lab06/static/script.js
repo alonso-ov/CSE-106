@@ -23,11 +23,12 @@ function setGrade(name, newGrade){
     request = new XMLHttpRequest()
 
     let newData = {
-        "grade" : newGrade}
+        "grade" : newGrade
+    }
 
     var json = JSON.stringify(newData)
 
-    request.open("PUT", "https://amhep.pythonanywhere.com:/grades/" + name)
+    request.open("PUT", "http://127.0.0.1:5000/grades/" + name)
     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
     request.send(json)
@@ -37,7 +38,7 @@ function editGrade(){
     let name = $("#input-4").val()
     let $outputText = $("#output-text-4")
 
-    request.open("GET", "https://amhep.pythonanywhere.com:/grades/" + name, true)
+    request.open("GET", "http://127.0.0.1:5000/grades/" + name, true)
 
     request.send()
 
@@ -116,7 +117,7 @@ function getAllGrades(){
 function deleteStudent(){
     let name = $("#input-5").val()
 
-    request.open("DELETE", "https://amhep.pythonanywhere.com:/grades/" + name, true)
+    request.open("DELETE", "http://127.0.0.1:5000/grades/" + name, true)
 
     request.send(null)
 }
