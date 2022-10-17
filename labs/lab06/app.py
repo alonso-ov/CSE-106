@@ -7,6 +7,8 @@ import json
 
 app = Flask(__name__)
 
+#not necessary but if machine throws error
+#CORS(app)
 data = {}
 
 @app.route('/')
@@ -19,6 +21,7 @@ def post_student():
     data[request.json['name']] = request.json['grade']
     return 'success'
 
+#edit grade
 @app.route('/grades/<string:name>', methods=['PUT'])
 def put_student(name):
     data[name] = request.json['grade']
@@ -38,6 +41,7 @@ def get_student(name):
     else:
         return 404
 
+# delete one student
 @app.route('/grades/<string:name>', methods=['DELETE'])
 def delete_student(name):
     if name in data:
