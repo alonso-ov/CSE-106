@@ -39,9 +39,11 @@
         <!--see all grades-->
         <div class="tab output" id="2" hidden>
             <h1>All Grades</h1>
-            <table id="output-table">
+            <table>
                 <th>Name</th>
                 <th>Grade</th>
+            </table>
+            <table id="output-table">
             </table>
         </div>
 
@@ -71,6 +73,6 @@
             <input type="button" value="Delete" onclick="deleteStudent()">
         </div>
 
-        <script src="{{ url_for('static',filename='script.js') }}">></script>
+        <script src="{{ url_for('static',filename='script.js') }}"></script>
     </body>
 </html>

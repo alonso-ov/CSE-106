@@ -99,6 +99,8 @@ function getAllGrades(){
     request.onload = () => {
         data = $.parseJSON(request.response)
 
+        $('#output-table').empty()
+
         $(function() {
             $.each(data, function(name, grade) {
                 var $tr = $('<tr>').append(
