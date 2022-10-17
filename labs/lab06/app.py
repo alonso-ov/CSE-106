@@ -38,5 +38,13 @@ def get_student(name):
     else:
         return 404
 
+@app.route('/grades/<string:name>', methods=['DELETE'])
+def delete_student(name):
+    if name in data:
+        del data[name]
+        return 'successfully deleted'
+    else:
+        return 404
+
 if __name__ == '__main__':
     app.run()
