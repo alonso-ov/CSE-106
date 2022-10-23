@@ -26,6 +26,12 @@ class Student(db.Model):
 def index():
     return render_template('index.html')
 
+# ----- RETURN ALL STUDENTS -----
+@app.route('/grades', methods=['GET'])
+def get_all_students():
+    Student.query.
+    return ''
+
 # ----- SEARCH STUDENT -----
 @app.route('/grades/<string:name>', methods=['GET'])
 def get_student(name):
