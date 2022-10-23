@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+body {
+    background-color: lightslategray;
+    font-family: 'Inconsolata', monospace;
+}
+
+.tab {
+    background-color: lightcoral;
+    border-radius: 1rem;
+    text-align:center;
+    width: 50%;
+    margin: auto;
+    margin-top: 2.5%;
+    padding:10px;
+}
+table{
+    margin: auto;
+}
+
+.user-select {
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2rem;
+}
