@@ -29,8 +29,15 @@ def index():
 # ----- RETURN ALL STUDENTS -----
 @app.route('/grades', methods=['GET'])
 def get_all_students():
-    Student.query.
-    return ''
+    #get all students
+    allStudents = Student.query.all()
+
+    #convert table to dictionary to then convert into JSON
+    gradebook = {}
+    for student in allStudents:
+        gradebook[student.name] = student.grade
+
+    return json.dumps(gradebook)
 
 # ----- SEARCH STUDENT -----
 @app.route('/grades/<string:name>', methods=['GET'])
